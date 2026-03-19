@@ -203,12 +203,6 @@
             <span id="btn-loader" class="hidden"><i class="fas fa-spinner fa-spin mr-2"></i>Procesando…</span>
           </button>
 
-          <p class="text-center text-xs text-cafe-500/70 mt-3">
-            Al registrarte aceptas nuestras
-            <a href="https://forestal.cafe/habeas-data.pdf" target="_blank"
-               class="underline hover:text-cafe-600 transition">políticas de privacidad</a>.
-          </p>
-
         </div>
         <!-- /FORMULARIO -->
 
