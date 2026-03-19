@@ -37,15 +37,77 @@
 
 <body class="min-h-screen bg-cafe-900 flex items-center justify-center p-4 font-body">
 
+  <!-- ══════════════════════════════════════════
+       MODAL – Autorización de datos personales
+  ══════════════════════════════════════════ -->
+  <div id="modal-autorizacion" class="fixed inset-0 z-50 flex items-center justify-center p-4 bg-cafe-900/95">
+    <div class="bg-cafe-50 rounded-2xl shadow-2xl border border-cafe-300/30 w-full max-w-lg overflow-hidden">
+
+      <!-- Cabecera -->
+      <div class="bg-gradient-to-br from-cafe-800 via-cafe-700 to-cafe-600 px-6 py-5 text-center">
+        <div class="w-14 h-14 mx-auto mb-3 rounded-full bg-white/10 border border-white/20 flex items-center justify-center">
+          <i class="fas fa-shield-halved text-cafe-200 text-2xl"></i>
+        </div>
+        <h2 class="font-display text-xl font-bold text-cafe-100">Autorización de Datos Personales</h2>
+        <p class="text-cafe-200/70 text-xs mt-1 tracking-wide">Ley 1581 de 2012 – Habeas Data</p>
+      </div>
+
+      <!-- Cuerpo -->
+      <div class="px-6 py-5">
+
+        <!-- Texto de autorización con scroll -->
+        <div class="bg-white border border-cafe-200 rounded-xl p-4 max-h-44 overflow-y-auto text-sm text-cafe-700 leading-relaxed">
+          <p>
+            Manifiesto de manera libre, expresa, informada y voluntaria que autorizo a la sociedad
+            <strong class="text-cafe-800">GRUPO MANZANARES S.A.S.</strong> para recolectar, almacenar,
+            usar, circular, suprimir y, en general, realizar el tratamiento de mis datos personales
+            conforme a lo establecido en la <strong class="text-cafe-800">Ley 1581 de 2012</strong>
+            y demás normas concordantes.
+          </p>
+          <p class="mt-3">
+            La presente autorización se otorga para que la empresa utilice mis datos en el desarrollo
+            de sus actividades comerciales, administrativas y legales, garantizando en todo momento
+            la confidencialidad, seguridad y protección de la información.
+          </p>
+        </div>
+
+        <!-- Checkbox -->
+        <label class="flex items-start gap-3 mt-4 cursor-pointer group">
+          <input type="checkbox" id="chk-acepto"
+                 class="mt-0.5 w-4 h-4 accent-cafe-600 cursor-pointer flex-shrink-0" />
+          <span class="text-xs text-cafe-700 leading-relaxed group-hover:text-cafe-800 transition">
+            He leído y acepto la autorización para el tratamiento de mis datos personales.
+          </span>
+        </label>
+        <p class="hidden text-xs text-red-600 font-semibold mt-1" id="err-acepto">
+          <i class="fas fa-circle-exclamation mr-1"></i>Debes aceptar la autorización para continuar.
+        </p>
+
+        <!-- Botón aceptar -->
+        <button type="button" id="btn-aceptar-modal"
+                class="w-full mt-5 bg-gradient-to-r from-cafe-700 to-cafe-500 hover:from-cafe-800 hover:to-cafe-600 text-cafe-50 font-bold text-sm uppercase tracking-widest py-3 rounded-lg shadow-lg transition">
+          <i class="fas fa-check mr-2"></i>Acepto y continuar
+        </button>
+
+
+
+      </div>
+    </div>
+  </div>
+  <!-- /Modal -->
+
+
+  <!-- ══════════════════════════════════════════
+       FORMULARIO PRINCIPAL
+  ══════════════════════════════════════════ -->
   <div class="w-full max-w-lg">
 
     <!-- Tarjeta -->
     <div class="bg-cafe-50 rounded-2xl shadow-2xl overflow-hidden border border-cafe-300/30">
 
-      <!-- ── Encabezado ── -->
+      <!-- Encabezado -->
       <div class="bg-gradient-to-br from-cafe-800 via-cafe-700 to-cafe-600 px-8 pt-10 pb-8 text-center">
 
-        <!-- Logo -->
         <div class="w-24 h-24 mx-auto mb-5 rounded-full bg-white/10 border border-white/20 flex items-center justify-center overflow-hidden">
           <img src="img/logo.png"
                onerror="this.onerror=null;this.src='img/logo.jpg'"
@@ -53,7 +115,6 @@
                class="max-w-[72px] max-h-[72px] object-contain" />
         </div>
 
-        <!-- Títulos -->
         <h1 class="font-display text-2xl font-bold text-cafe-100 leading-tight">
           Descubre el sabor<br/>de nuestro origen
         </h1>
@@ -61,7 +122,6 @@
           Regístrate y recibe una taza de café de cortesía
         </p>
 
-        <!-- Separador decorativo -->
         <div class="flex items-center justify-center gap-3 mt-5">
           <div class="h-px w-10 bg-cafe-400/60"></div>
           <i class="fas fa-mug-hot text-cafe-400 text-sm"></i>
@@ -71,10 +131,10 @@
       </div>
       <!-- /Encabezado -->
 
-      <!-- ── Cuerpo del formulario ── -->
+      <!-- Cuerpo -->
       <div class="px-8 py-8">
 
-        <!-- FORMULARIO (se oculta al registrar con éxito) -->
+        <!-- FORMULARIO -->
         <div id="registro-form">
 
           <!-- Nombre -->
@@ -143,7 +203,6 @@
             <span id="btn-loader" class="hidden"><i class="fas fa-spinner fa-spin mr-2"></i>Procesando…</span>
           </button>
 
-          <!-- Política de privacidad -->
           <p class="text-center text-xs text-cafe-500/70 mt-3">
             Al registrarte aceptas nuestras
             <a href="https://forestal.cafe/habeas-data.pdf" target="_blank"
@@ -153,7 +212,7 @@
         </div>
         <!-- /FORMULARIO -->
 
-        <!-- ── Pantalla de éxito (oculta) ── -->
+        <!-- Pantalla de éxito -->
         <div id="success-screen" class="hidden text-center py-4">
 
           <div class="w-20 h-20 mx-auto mb-5 rounded-full bg-gradient-to-br from-cafe-700 to-cafe-500 flex items-center justify-center shadow-lg">
@@ -191,5 +250,6 @@
 
   <script src="js/validation.js"></script>
   <script src="js/form.js"></script>
+  <script src="js/modal.js"></script>
 </body>
 </html>
