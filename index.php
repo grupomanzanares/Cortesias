@@ -227,7 +227,7 @@
           </div>
 
           <p class="text-xs text-cafe-600/70 mt-4 leading-relaxed">
-            Preséntalo en cualquiera de nuestros puntos de venta<br/>y disfruta tu taza de café.
+            Preséntalo en cualquiera de nuestras tiendas durante el mes de abril del 2026<br/>y disfruta tu taza de café.
           </p>
 
           <button type="button" onclick="location.reload()"
