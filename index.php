@@ -221,7 +221,10 @@
           </div>
 
           <p class="text-xs text-cafe-600/70 mt-4 leading-relaxed">
-            Preséntalo en cualquiera de nuestras tiendas durante el mes de abril del 2026<br/>y disfruta tu taza de café.
+            Presenta este código y disfruta tu café de cortesía.<br />
+            O toma una captura y redímelo en cualquiera de nuestras tiendas.<br />
+
+            Código válido del 22 de marzo al 30 de abril de 2026  
           </p>
 
           <button type="button" onclick="location.reload()"
