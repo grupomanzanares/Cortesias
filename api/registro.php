@@ -93,11 +93,11 @@ try {
     ');
     $stmt->execute([$nombre, $correo, $celular, $ciudad, $barrio, $codigo]);
     
-    $stmt2 = $pdo2->prepare('
-    INSERT INTO LotteryParticipations (code, lotteryId, subscriberId, status, message)
-    VALUES (?, ?, ?, ?, ?)
-    ');
-    $stmt2->execute([$codigo, $lotteryId, $celular, $status, $message]);
+    // $stmt2 = $pdo2->prepare('
+    // INSERT INTO LotteryParticipations (code, lotteryId, subscriberId, status, message)
+    // VALUES (?, ?, ?, ?, ?)
+    // ');
+    // $stmt2->execute([$codigo, $lotteryId, $celular, $status, $message]);
 
     echo json_encode(['success'=>true,'codigo'=>$codigo]);
 } catch (PDOException $e) {
