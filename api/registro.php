@@ -18,7 +18,7 @@ $correo  = trim($body['correo']  ?? '');
 $celular = trim($body['celular'] ?? '');
 $ciudad  = trim($body['ciudad']  ?? '');
 $barrio  = trim($body['barrio']  ?? '');
-$lotteryId = trim($body['lotteryId'] ?? '');
+$lotteryId = 3;
 
 
 /* ─── Validación ── */
@@ -98,7 +98,7 @@ try {
     VALUES (?, ?, ?, ?, ?)
     ');
     $stmt2->execute([$codigo, $lotteryId, $celular, $status, $message]);
-    
+
     echo json_encode(['success'=>true,'codigo'=>$codigo]);
 } catch (PDOException $e) {
     if ($e->getCode() === '23000') {
