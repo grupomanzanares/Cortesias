@@ -58,7 +58,7 @@ try {
     $pdo2 = new PDO(
         'mysql:host=localhost;dbname=comercial;charset=utf8mb4',
         'cortesias',   // <- tu usuario
-        'aZvcw0Cn47Y6U*',    // <- tu contraseña
+        'aZvcw0Cn47Y6U',    // <- tu contraseña
         [
             PDO::ATTR_ERRMODE            => PDO::ERRMODE_EXCEPTION,
             PDO::ATTR_DEFAULT_FETCH_MODE => PDO::FETCH_ASSOC,
