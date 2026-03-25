@@ -18,6 +18,9 @@ $correo  = trim($body['correo']  ?? '');
 $celular = trim($body['celular'] ?? '');
 $ciudad  = trim($body['ciudad']  ?? '');
 $barrio  = trim($body['barrio']  ?? '');
+$lotteryId = 3;
+$status = 1;
+$message = 0;
 
 /* ─── Validación ── */
 $errors = [];
@@ -39,6 +42,23 @@ try {
         'mysql:host=localhost;dbname=forestal_registro;charset=utf8mb4',
         'cortesias',   // <- tu usuario
         'aZvcw0Cn47Y6U',    // <- tu contraseña
+        [
+            PDO::ATTR_ERRMODE            => PDO::ERRMODE_EXCEPTION,
+            PDO::ATTR_DEFAULT_FETCH_MODE => PDO::FETCH_ASSOC,
+            PDO::ATTR_EMULATE_PREPARES   => false,
+        ]
+    );
+} catch (PDOException $e) {
+    http_response_code(500);
+    echo json_encode(['success'=>false,'message'=>'Error de conexión a la base de datos']);
+    exit;
+}
+
+try {
+    $pdo2 = new PDO(
+        'mysql:host=localhost;dbname=comercial;charset=utf8mb4',
+        'cortesias',   // <- tu usuario
+        'aZvcw0Cn47Y6U*',    // <- tu contraseña
         [
             PDO::ATTR_ERRMODE            => PDO::ERRMODE_EXCEPTION,
             PDO::ATTR_DEFAULT_FETCH_MODE => PDO::FETCH_ASSOC,
@@ -73,6 +93,13 @@ try {
         VALUES (?, ?, ?, ?, ?, ?)
     ');
     $stmt->execute([$nombre, $correo, $celular, $ciudad, $barrio, $codigo]);
+    
+    $stmt2 = $pdo2->prepare('
+    INSERT INTO LotteryParticipations (date, code, createdAt, updatedAt, lotteryId, subscriberId, status, message)
+    VALUES (?, ?, ?, ?, ?, ?, ?, ?)
+    ');
+    $stmt2->execute([date('Y-m-d H:i:s'), $codigo, date('Y-m-d H:i:s'), date('Y-m-d H:i:s'), $lotteryId, $celular, $status, $message]);
+
     echo json_encode(['success'=>true,'codigo'=>$codigo]);
 } catch (PDOException $e) {
     if ($e->getCode() === '23000') {
